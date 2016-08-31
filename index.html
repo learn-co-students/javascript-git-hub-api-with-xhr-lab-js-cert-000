@@ -4,11 +4,11 @@
     <title>JavaScript GitHub API with XHR</title>
     <link rel="stylesheet" type="text/css" href="node_modules/mocha/mocha.css">
     <style>
-       .flexbox-container {
-         display: -ms-flex;
-         display: -webkit-flex;
-         display: flex;
-       }
+      .flexbox-container {
+        display: -ms-flex;
+        display: -webkit-flex;
+        display: flex;
+      }
 
       .flexbox-container > div {
         width: 50%;
@@ -19,9 +19,13 @@
         margin-right: 20px;
       }
     </style>
-    </head>
-    <body>
+  </head>
+  <body>
     <main id="main">
+    <form onsubmit="getRepositories();return false;">
+      <input type="text" id="username"><br>
+      <button type="submit">Get Repos</button>
+    </form>
     </main>
     <div class="flexbox-container">
       <div>
@@ -36,10 +40,10 @@
     <script src="index.js"></script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
     <div id="mocha"></div>
-    <script src="node_modules/mocha/mocha.js"></script>
-    <script src="node_modules/expect/umd/expect.min.js"></script>
-    <script src="node_modules/sinon/pkg/sinon.js"></script>
+    <script src="./node_modules/mocha/mocha.js"></script>
+    <script src="./node_modules/expect/umd/expect.min.js"></script>
+    <script src="./node_modules/sinon/pkg/sinon.js"></script>
     <script>mocha.setup('bdd');</script>
-    <script src="test/space-invaders-test.js"></script>
+    <!-- <script src="test/space&#45;invaders&#45;test.js"></script> -->
   </body>
 </html>
