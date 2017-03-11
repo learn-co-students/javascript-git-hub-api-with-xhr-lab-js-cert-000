@@ -21,14 +21,14 @@
 
       #username-entry {
         margin-top: 20px;
-        margin-left: 20px;
+        margin-left: 10px;
       }
     </style>
     </head>
     <body>
     <main id="main">
-      <form id="username-entry">
-          <input type="text" name="username"><br>
+      <form id="username-entry" onsubmit="getRepositories()">
+          <input type="text" id="username"><br>
           <input type="submit">
       </form>
     </main>
