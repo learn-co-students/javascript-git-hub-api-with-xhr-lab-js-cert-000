@@ -27,7 +27,7 @@
     </head>
     <body>
     <main id="main">
-      <form id="username-entry" onsubmit="getRepositories()">
+      <form id="username-entry" onsubmit="getRepositories();return false;">
           <input type="text" id="username"><br>
           <input type="submit">
       </form>
@@ -49,5 +49,6 @@
     <script src="node_modules/expect/umd/expect.min.js"></script>
     <script src="node_modules/sinon/pkg/sinon.js"></script>
     <script>mocha.setup('bdd');</script>
+    <!-- <script src="test/index-test.js"></script> -->
   </body>
 </html>
