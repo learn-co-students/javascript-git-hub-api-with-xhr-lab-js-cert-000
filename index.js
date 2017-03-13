@@ -32,9 +32,17 @@ function displayCommits() {
   document.getElementById('details').innerHTML = commitsList;
 }
 
-function getBranches() {
-  debugger; //did we make it?
-  //we are getting all the way to here. Now all you have to do is make the last XHR request, make a list and
-  //place it in the DOM and make sure all the Learn Tests pass. Then, go back and refactor according to their
-  //solution for best practies. 
+function getBranches(repo) {
+  var username = repo.dataset.username;
+  var repository = repo.dataset.username;
+  var uri = rootURL + "/repos/" + username + "/" + repository + "/branches";
+  debugger; //check uri variable
+  var xhr = new XMLHttpRequest();
+  xhr.addEventListener("load", displayBranches);
+  xhr.open("GET", uri);
+  xhr.send();
+}
+
+function displayBranches() {
+  debugger; //did we get here?
 }
