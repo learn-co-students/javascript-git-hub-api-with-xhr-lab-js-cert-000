@@ -11,12 +11,23 @@ function getRepositories() {
 
 function displayRepositories() {
   var repositories = JSON.parse(this.responseText);
-  var repoList = `<ul>${repositories.map(repo => '<li><strong>' + repo.name + '</strong> - <a href="' + repo.html_url + '" data-username="' + repo.owner.login + '" data-repository="' + repo.name + '" onclick="getCommits(this)">' + repo.html_url + '</a> - <a href="#" data-username="' + repo.owner.login + '" data-repository="' + repo.name + '" onclick="getBranches(this)">Get Branches</a></li>').join('')}</ul>`;
+  var repoList = "<ul>" + repositories.map(repo => {
+    const dataUsername = 'data-username="' + repo.owner.login + '"';
+    const dataRepository = 'data-repository="' + repo.name + '"';
+    return(`
+        <li>
+          <h2>${repo.name}</h2>
+          <a href="${repo.html_url}">${repo.html_url}</a><br>
+          <a href="#" ${dataUsername} ${dataRepository} onclick="getCommits(this)">Get Commits</a><br>
+          <a href="#" ${dataUsername} ${dataRepository} onclick="getBranches(this)">Get Branches</a>
+        </li>`
+      )
+  }).join('') + "</ul>";
   document.getElementById('repositories').innerHTML = repoList;
 }
 
 function getCommits(repo) {
-  event.preventDefault();
+  // event.preventDefault();
   var username = repo.dataset.username;
   var repository = repo.dataset.repository;
   var uri = rootURL + "/repos/" + username + "/" + repository + "/commits";
