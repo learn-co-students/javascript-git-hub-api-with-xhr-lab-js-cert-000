@@ -4,12 +4,12 @@ function getRepositories() {
   var username = document.getElementById('username').value;
   var uri = rootURL + "/users/" + username + "/repos";
   var req = new XMLHttpRequest()
-  req.addEventListener("load", showRepositories);
+  req.addEventListener("load", displayRepositories);
   req.open("GET", uri);
   req.send();
 }
 
-function showRepositories() {
+function displayRepositories() {
   var repositories = JSON.parse(this.responseText);
   var repoList = `<ul>${repositories.map(repo => '<li><strong>' + repo.name + '</strong> - <a href="' + repo.html_url + '" data-username="' + repo.owner.login + '" data-repository="' + repo.name + '" onclick="getCommits(this)">' + repo.html_url + '</a> - <a href="#" data-username="' + repo.owner.login + '" data-repository="' + repo.name + '" onclick="getBranches(this)">Get Branches</a></li>').join('')}</ul>`;
   document.getElementById('repositories').innerHTML = repoList;
