@@ -34,9 +34,8 @@ function displayCommits() {
 
 function getBranches(repo) {
   var username = repo.dataset.username;
-  var repository = repo.dataset.username;
+  var repository = repo.dataset.repository;
   var uri = rootURL + "/repos/" + username + "/" + repository + "/branches";
-  debugger; //check uri variable
   var xhr = new XMLHttpRequest();
   xhr.addEventListener("load", displayBranches);
   xhr.open("GET", uri);
@@ -44,5 +43,7 @@ function getBranches(repo) {
 }
 
 function displayBranches() {
-  debugger; //did we get here?
+  var branches = JSON.parse(this.responseText);
+  var branchesList = `<ul>${branches.map(branch => '<li>' + branch.name + '</li>').join('')}</ul>`
+  document.getElementById('details').innerHTML = branchesList;
 }
